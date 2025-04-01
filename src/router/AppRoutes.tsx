@@ -8,12 +8,19 @@
  * - Suspense for lazy loading and loading states
  * - Layout wrapper for consistent page structure
  * - Route definitions for all major application pages
+ * 
+ * Route Structure:
+ * - / : Home page
+ * - /agents : Agent management interface
+ * - /design : Workflow designer
+ * - /monitoring : Execution monitoring
+ * - Plus static pages (About, Docs, Blog, Contact)
  */
 
-import { Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from '../components/Layout';
-import Home from '../pages/Home';
+import HomePage from '../pages/HomePage';
 import AgentManagementPage from '../features/agent-management/pages/AgentManagementPage';
 import WorkflowDesignerPage from '../features/workflow-design/pages/WorkflowDesignerPage';
 import ExecutionMonitoringPage from '../features/execution-monitoring/pages/ExecutionMonitoringPage';
@@ -25,7 +32,7 @@ const AppRoutes = () => {
       <Layout>
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/agents" element={<AgentManagementPage />} />
             <Route path="/design" element={<WorkflowDesignerPage />} />
             <Route path="/monitoring" element={<ExecutionMonitoringPage />} />
